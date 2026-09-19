@@ -1,0 +1,55 @@
+[project]
+name = "fastapi-agent-protocol"
+version = "0.1.0"
+description = "Reusable FastAPI runtime exposing user-owned LangGraph graphs over the Agent Protocol streaming surface"
+readme = "README.md"
+authors = [
+    { name = "Danny Thuering", email = "danny@webmobix.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "langchain-core>=0.3",
+    "langgraph>=0.6",
+]
+
+[project.optional-dependencies]
+sqlite = ["langgraph-checkpoint-sqlite>=2.0"]
+test = [
+    "httpx>=0.27",
+    "pytest>=8",
+    "pytest-asyncio>=0.24",
+    "langgraph-checkpoint-sqlite>=2.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.8",
+    "mypy>=1.13",
+    "pytest>=8",
+    "pytest-asyncio>=0.24",
+    "httpx>=0.27",
+    "langgraph-checkpoint-sqlite>=2.0",
+    "uvicorn>=0.30",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.13,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = ["slow: end-to-end tests that boot servers/subprocesses"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+ignore_missing_imports = true

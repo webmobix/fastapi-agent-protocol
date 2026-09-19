@@ -1,0 +1,17 @@
+{
+  "name": "fastapi-agent-protocol-e2e",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "JS compatibility harness: pinned langgraph-sdk-js + useStreamRuntime wiring proof against the fixture protocol app",
+  "scripts": {
+    "e2e": "node e2e.mjs",
+    "check-runtime": "node check_runtime.mjs"
+  },
+  "dependencies": {
+    "@langchain/langgraph-sdk": "1.11.0"
+  },
+  "devDependencies": {
+    "@assistant-ui/react-langgraph": "0.14.27"
+  }
+}
